@@ -2,48 +2,67 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Fri Apr 14 13:13:14 2023
-# Process ID: 6468
+# Start of session at: Fri May 12 13:04:23 2023
+# Process ID: 6816
 # Current directory: C:/Users/8201525/Desktop/labs
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6368 C:\Users\8201525\Desktop\labs\labs.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6716 C:\Users\8201525\Desktop\labs\labs.xpr
 # Log file: C:/Users/8201525/Desktop/labs/vivado.log
 # Journal file: C:/Users/8201525/Desktop/labs\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/8201525/Desktop/labs/labs.xpr
 update_compile_order -fileset sources_1
-close [ open C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/decoder_riscv.v w ]
-add_files C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/decoder_riscv.v
-update_compile_order -fileset sources_1
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top decoder_riscv [current_fileset]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sources_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-synth_design -rtl -name rtl_1
-close_design
-update_compile_order -fileset sources_1
-synth_design -rtl -name rtl_1
-synth_design -rtl -name rtl_1
-close_design
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-close [ open C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_decoder_riscv.v w ]
-add_files -fileset sim_1 C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_decoder_riscv.v
-update_compile_order -fileset sim_1
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top tb_decoder_riscv [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_1
-synth_design -rtl -name rtl_1
 launch_simulation
-source tb_decoder_riscv.tcl
+source tb_riscv_unit.tcl
+run all
+restart
 run all
 close_sim
-close_design
+launch_simulation
+source tb_riscv_unit.tcl
+restart
+run all
+close_sim
+launch_simulation
+source tb_riscv_unit.tcl
+restart
+run all
+restart
+run all
+close_sim
+launch_simulation
+source tb_riscv_unit.tcl
+restart
+run all
+restart
+run all
+run all
+run all
+close_sim
+launch_simulation
+source tb_riscv_unit.tcl
+restart
+run all
+restart
+run all
+restart
+run all
+close_sim
+launch_simulation
+source tb_riscv_unit.tcl
+restart
+run all
+restart
+run all
+close_sim
+close [ open C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/oneHotEncoder.v w ]
+add_files C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/oneHotEncoder.v
+update_compile_order -fileset sources_1
+close [ open C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/led_sb_ctrl.v w ]
+add_files C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/led_sb_ctrl.v
+update_compile_order -fileset sources_1
+close [ open C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/sw_sb_ctrl.v w ]
+add_files C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/sw_sb_ctrl.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1

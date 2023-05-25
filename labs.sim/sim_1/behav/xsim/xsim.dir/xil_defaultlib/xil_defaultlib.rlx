@@ -1,8 +1,25 @@
-0.7
-2020.1
-May 27 2020
-20:09:33
-C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
-C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.srcs/sim_1/new/tb_decoder_riscv.v,1682623334,verilog,,,C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.srcs/sources_1/new/defines_riscv.v,decoder_riscv_ref;tb_decoder_riscv,,,../../../../labs.srcs/sources_1/new,,,,,
-C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.srcs/sources_1/new/decoder_riscv.v,1682660400,verilog,,C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.srcs/sim_1/new/tb_decoder_riscv.v,C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.srcs/sources_1/new/defines_riscv.v,decoder_riscv,,,../../../../labs.srcs/sources_1/new,,,,,
-C:/Users/ReWoodPC/Downloads/FPGA/Labs/labs.srcs/sources_1/new/defines_riscv.v,1677839087,verilog,,,,,,,,,,,,
+0.6
+2019.2
+Nov  6 2019
+21:57:16
+C:/Users/8201525/Desktop/labs/labs.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_cybercobra.v,1680263326,verilog,,,,tb_CYBERcobra,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_data_mem.v,1679048774,verilog,,,,tb_data_mem8,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_decoder_riscv.v,1682678985,verilog,,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/defines_riscv.v,decoder_riscv_ref;tb_decoder_riscv,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_fulladder.v,1676630600,verilog,,,,tb_fulladder,,,,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_fulladder32.v,1676633211,verilog,,,,tb_fulladder32,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_instr_mem.v,1679047974,verilog,,,,instr_mem_ref8;tb_instr_mem,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_miriscv_alu.v,1677841153,verilog,,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/defines_riscv.v,tb_miriscv_alu,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_rf_riscv.v,1679050522,verilog,,,,register_file_ref;tb_rf_riscv,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_riscv_unit.v,1682684796,verilog,,,,tb_riscv_unit,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/PC.v,1682681533,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/data_mem.v,,PC,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/cybercobra.v,1680267055,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/fulladder32.v,,CYBERcobra,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/data_mem.v,1679048815,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/decoder_riscv.v,,data_mem,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/decoder_riscv.v,1682679096,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/fulladder32.v,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/defines_riscv.v,decoder_riscv,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/defines_riscv.v,1677839087,verilog,,,,,,,,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/fulladder32.v,1676634282,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/instr_mem.v,,fulladder;fulladder16;fulladder32;fulladder4,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/instr_mem.v,1682685383,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/rf_riscv.v,,instr_mem,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/rf_riscv.v,1680258993,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/riscv_core.v,,rf_riscv,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/riscv_core.v,1683888674,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/riscv_unit.v,,riscv_core,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/riscv_unit.v,1682684908,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/àlu_risñv.v,,riscv_unit,,,../../../../labs.srcs/sources_1/new,,,,,
+C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/àlu_risñv.v,1677845954,verilog,,C:/Users/8201525/Desktop/labs/labs.srcs/sim_1/new/tb_riscv_unit.v,C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/defines_riscv.v;C:/Users/8201525/Desktop/labs/labs.srcs/sources_1/new/fulladder32.v,alu_riscv,,,../../../../labs.srcs/sources_1/new,,,,,

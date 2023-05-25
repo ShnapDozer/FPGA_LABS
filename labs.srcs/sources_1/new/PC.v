@@ -9,4 +9,5 @@ module PC (
         if(rst_i) addr_o <= 0;
         else addr_o <= d_i;
     end
+    
 endmodule

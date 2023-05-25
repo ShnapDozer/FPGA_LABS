@@ -177,7 +177,7 @@ module tb_decoder_riscv();
       $display ("SUCCESS!");
     $finish;
   end
-
+  
   wire [1:0]opcode_d = instr[1:0];
   wire [2:0]func3 = instr[14:12];
   wire [6:0]func7 = instr[31:25];
@@ -186,52 +186,52 @@ module tb_decoder_riscv();
     @(instr);
     #1;
     if (illegal_miss)begin
-      $display("Output 'illegal_instr_o' is incorrect: illegal_instr %b \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t\n",  illegal_instr, opcode, func3, func7, instr, opcode_d, $time);
+      $display("Output 'illegal_instr_o' is incorrect illegal_instr: %b \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t\n",  illegal_instr, opcode, func3, func7, instr, opcode_d, $time);
       error = error + 1'b1;
       end
     if (~illegal_miss) begin
       if (a_sel_miss)begin
-        $display ("Output 'ex_op_a_sel_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'ex_op_a_sel_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",  opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (b_sel_miss)begin
-        $display ("Output 'ex_op_b_sel_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'ex_op_b_sel_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (alu_op_miss)begin
-        $display ("Output 'alu_op_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'alu_op_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",  opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (mem_we_miss)begin
-        $display ("Output 'mem_we_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'mem_we_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (mem_size_miss)begin
-        $display ("Output 'mem_size_o' is incorrect %b, need %b, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  ref.mem_size_o, mem_size, opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'mem_size_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (mem_req_miss)begin
-        $display ("Output 'mem_req_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'mem_req_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (wb_src_sel_miss)begin
-        $display ("Output 'wb_src_sel_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'wb_src_sel_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (gpr_we_a_miss)begin
-        $display ("Output 'gpr_we_a_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'gpr_we_a_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (branch_miss)begin
-        $display ("Output 'branch_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'branch_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (jal_miss)begin
-        $display ("Output 'jal_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'jal_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
       if (jalr_miss)begin
-        $display ("Output 'jalr_o' is incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+        $display ("Output 'jalr_o' is incorrect, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
         error = error + 1'b1;
         end
     end
@@ -239,7 +239,7 @@ module tb_decoder_riscv();
     if ((a_sel != `OP_A_RS1) &
         (a_sel != `OP_A_CURR_PC) &
         (a_sel != `OP_A_ZERO)) begin
-      $display ("Output 'ex_op_a_sel_o' must always have a legal value, incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+      $display ("Output 'ex_op_a_sel_o' must always have a legal value, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
       error = error + 1;
     end
     if ((b_sel != `OP_B_RS2) &
@@ -247,7 +247,7 @@ module tb_decoder_riscv();
         (b_sel != `OP_B_IMM_U) &
         (b_sel != `OP_B_IMM_S) &
         (b_sel != `OP_B_INCR)) begin
-      $display ("Output 'ex_op_b_sel_o' must always have a legal value, incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+      $display ("Output 'ex_op_b_sel_o' must always have a legal value, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
       error = error + 1;
     end
     if ((alu_op != `ALU_ADD)  & (alu_op != `ALU_SUB) &
@@ -258,7 +258,7 @@ module tb_decoder_riscv();
         (alu_op != `ALU_GES)  & (alu_op != `ALU_GEU) &
         (alu_op != `ALU_EQ)   & (alu_op != `ALU_NE)  &
         (alu_op != `ALU_SLTS) & (alu_op != `ALU_SLTU)) begin
-      $display ("Output 'alu_op_o' must always have a legal value, incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+      $display ("Output 'alu_op_o' must always have a legal value, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
       error = error + 1;
     end
     if ((mem_size != `LDST_B) &
@@ -266,12 +266,12 @@ module tb_decoder_riscv();
         (mem_size != `LDST_W) &
         (mem_size != `LDST_BU) &
         (mem_size != `LDST_HU)) begin
-      $display ("Output 'mem_size_o' must always have a legal value, incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+      $display ("Output 'mem_size_o' must always have a legal value, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
       error = error + 1;
     end
     if ((wb_src_sel != `WB_EX_RESULT) &
         (wb_src_sel != `WB_LSU_DATA)) begin
-      $display ("Output 'wb_src_sel_o' must always have a legal value, incorrect, \nopcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b, \ntime: %t",  opcode, func3, func7, instr, opcode_d, $time);
+      $display ("Output 'wb_src_sel_o' must always have a legal value, opcode %b, func3 %b, func7 %b, instruction: %b,  opcode_d %b,  time: %t ",   opcode, func3, func7, instr, opcode_d, $time);
       error = error + 1;
     end
   end

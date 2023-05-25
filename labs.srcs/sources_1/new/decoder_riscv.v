@@ -1,23 +1,23 @@
 `include "defines_riscv.v"
 
 module decoder_riscv (
-  input       [31:0]  fetched_instr_i,      // ����������
-  output  reg [1:0]   ex_op_a_sel_o,        // ����������� ������ �������������� ��� ������ ������� �������� ���
-  output  reg [2:0]   ex_op_b_sel_o,        // ����������� ������ �������������� ��� ������ ������� �������� ���
-  output  reg [4:0]   alu_op_o,             // �������� ���
-  output  reg         mem_req_o,            // ���������� � ������ � ������� ��� ��������
-  output  reg         mem_we_o,             // 1, ���� ���������� �������� ������ � ������, � 0 � ���� ������� �� ������
-  output  reg [2:0]   mem_size_o,           // ����������� ������ ������ ������ ����������� ��� ��������
-  output  reg         gpr_we_a_o,           // ����� �� �������� ������ � ����������� ����
-  output  reg         wb_src_sel_o,         // ����������� ������ �������������� ��� ������ ������, ������������ � ����������� ����
-  output  reg         illegal_instr_o,      // ������ � ������������ ���������� 
-  output  reg         branch_o,             // ������ �� ���������� ��������� ��������
-  output  reg         jal_o,                // ������ �� ���������� ������������ �������� jal
-  output  reg         jalr_o                // ������ �� ���������� ������������ �������� jalr
+  input       [31:0]  fetched_instr_i,      // ??????????
+  output  reg [1:0]   ex_op_a_sel_o,        // ??????????? ?????? ?????????????? ??? ?????? ??????? ???????? ???
+  output  reg [2:0]   ex_op_b_sel_o,        // ??????????? ?????? ?????????????? ??? ?????? ??????? ???????? ???
+  output  reg [4:0]   alu_op_o,             // ???????? ???
+  output  reg         mem_req_o,            // ?????????? ? ?????? ? ??????? ??? ????????
+  output  reg         mem_we_o,             // 1, ???? ?????????? ???????? ?????? ? ??????, ? 0 ? ???? ??????? ?? ??????
+  output  reg [2:0]   mem_size_o,           // ??????????? ?????? ?????? ?????? ??????????? ??? ????????
+  output  reg         gpr_we_a_o,           // ????? ?? ???????? ?????? ? ??????????? ????
+  output  reg         wb_src_sel_o,         // ??????????? ?????? ?????????????? ??? ?????? ??????, ???????????? ? ??????????? ????
+  output  reg         illegal_instr_o,      // ?????? ? ???????????? ?????????? 
+  output  reg         branch_o,             // ?????? ?? ?????????? ????????? ????????
+  output  reg         jal_o,                // ?????? ?? ?????????? ???????????? ???????? jal
+  output  reg         jalr_o               
 );
 
     wire [1:0]opcode_d = fetched_instr_i[1:0];
-    wire [3:0]opcode = fetched_instr_i[6:2];
+    wire [4:0]opcode = fetched_instr_i[6:2];
     wire [2:0]func3 = fetched_instr_i[14:12];
     wire [6:0]func7 = fetched_instr_i[31:25];
  
@@ -46,7 +46,7 @@ module decoder_riscv (
 
             5'b01100:begin // alu operation
 
-                if ((func7 == 2'h00) | ((func7 == 2'h20) & 
+                if ((func7 == 7'h00) | ((func7 == 7'h20) & 
                     ((func3 == 3'b000) | (func3 == 3'b101)))) begin
                        
                     ex_op_a_sel_o = 0;
@@ -64,8 +64,8 @@ module decoder_riscv (
 
             5'b00100:begin // OP_IMM 
 
-                if ( ((func3 == 1'h1) & (func7 != 2'h00)) | 
-                    ((func3 == 1'h5) & (func7 != 2'h00) & (func7 != 2'h20)) ) begin
+                if ( ((func3 == 3'h1) & (func7 != 7'h00)) | 
+                    ((func3 == 3'h5) & (func7 != 7'h00) & (func7 != 7'h20)) ) begin
                         illegal_instr_o = 1;
 
                 end else begin
@@ -85,7 +85,7 @@ module decoder_riscv (
 
             5'b00000:begin // LOAD
 
-                if((func3 <= 1'h5) & (func3 != 1'h3)) begin 
+                if((func3 <= 3'h5) & (func3 != 3'h3)) begin 
                     ex_op_a_sel_o = 0;
                     ex_op_b_sel_o = 1;
                     
@@ -105,12 +105,13 @@ module decoder_riscv (
 
             5'b01000:begin // STORE
 
-                if(func3 <= 1'h2) begin 
+                if(func3 <= 3'h2) begin 
                     ex_op_a_sel_o = 0;
                     ex_op_b_sel_o = 3;
                     
                     alu_op_o = `ALU_ADD;
-                    
+
+                    mem_req_o = 1;
                     mem_we_o = 1;
                     mem_size_o = func3;
 
@@ -120,7 +121,7 @@ module decoder_riscv (
             end
 
             5'b11000:begin // BRANCH
-                if((func3 != 1'h2) & (func3 != 1'h3)) begin                
+                if((func3 != 3'h2) & (func3 != 3'h3)) begin                
                     branch_o = 1;
                     
                     ex_op_a_sel_o = 0;
@@ -146,7 +147,7 @@ module decoder_riscv (
             end
 
             5'b11001:begin // JALR
-                if(func3 == 1'h0) begin
+                if(func3 == 3'h0) begin
                 jalr_o = 1;
             
                 ex_op_a_sel_o = 1;
@@ -184,9 +185,18 @@ module decoder_riscv (
             end
 
             5'b00011:begin // MISC-MEM
+                if(func3 != 0) begin
+                    illegal_instr_o = 1;
+                end else begin
+                end
             end
 
             5'b11100: begin // SYSTEM
+                if(!((fetched_instr_i[31:7] == 0) | 
+                ((fetched_instr_i[31:20] == 1) & (fetched_instr_i[19:7] == 0)))) begin
+                    illegal_instr_o = 1;
+                end else begin 
+                end
             end
 
             default: begin

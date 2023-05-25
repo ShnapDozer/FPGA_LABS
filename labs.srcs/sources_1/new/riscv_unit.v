@@ -10,6 +10,33 @@ module riscv_unit(
     wire [31:0] write_data;
     wire [31:0] write_data_addr;
     wire WE;
+    
+    
+    wire [255:0] periphWire;
+    OneHotEncoder periphEncoder(
+        .addres_in(write_data_addr[31:24]),
+        .select_out(periphWire)
+    );
+    
+    sw_sb_ctrl (
+        .clk_i(clk_i),
+        .addr_i(),
+        .req_i(),
+        .WD_i(),
+        .WE_i(),
+        .RD_o(),
+        .led_o()
+    );
+    
+    led_sb_ctrl (
+        .clk_i(clk_i),
+        .addr_i(),
+        .req_i(),
+        .WD_i(write_data),
+        .WE_i(WE),
+        .RD_o(),
+        .led_o()
+    );
 
     riscv_core core(
         .clk_i(clk_i),

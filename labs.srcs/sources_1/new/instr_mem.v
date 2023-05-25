@@ -4,7 +4,7 @@ module instr_mem(
     );
     
     reg [7:0] RAM [0:1023];
-    initial $readmemb("program.txt", RAM);
+    initial $readmemh("program.txt", RAM);
     
     assign read_data = {
         RAM[addr + 3], 
