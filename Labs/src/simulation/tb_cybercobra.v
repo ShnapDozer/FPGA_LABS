@@ -20,19 +20,15 @@ module tb_CYBERcobra();
     always #5 clk = ~clk;
     
     initial begin 
+    INr = 15'b000001000;
     rstn = 1'b0;
-   
+
     #10;
     rstn = 1'b1;
-    INr = 15'b0;
-    #200;
-    INr = 15'b100001000;
-    #260;
-    INr = 15'b0;
-    #100;
-//    INr = 15'b100000001;
-//    #20000;
-//    $stop;
+
+
+    #20000;
+    $stop;
     end
     
 endmodule
