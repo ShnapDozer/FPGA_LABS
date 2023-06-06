@@ -1,7 +1,0 @@
-Running: xsim.dir/tb_CYBERcobra_behav/xsimk.exe -simmode gui -wdb tb_CYBERcobra_behav.wdb -simrunnum 0 -socket 52465
-Design successfully loaded
-Design Loading Memory Usage: 5972 KB (Peak: 5972 KB)
-Design Loading CPU Usage: 31 ms
-Simulation completed
-Simulation Memory Usage: 14824 KB (Peak: 14824 KB)
-Simulation CPU Usage: 2854 ms
