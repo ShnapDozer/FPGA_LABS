@@ -17,7 +17,30 @@ module riscv_unit(
         .addres_in(write_data_addr[31:24]),
         .select_out(periphWire)
     );
+<<<<<<< HEAD:Labs/src/sources/riscv_unit.v
    
+=======
+    
+    sw_sb_ctrl (
+        .clk_i(clk_i),
+        .addr_i(),
+        .req_i(),
+        .WD_i(),
+        .WE_i(),
+        .RD_o(),
+        .led_o()
+    );
+    
+    led_sb_ctrl (
+        .clk_i(clk_i),
+        .addr_i(),
+        .req_i(),
+        .WD_i(write_data),
+        .WE_i(WE),
+        .RD_o(),
+        .led_o()
+    );
+>>>>>>> 806d6b0dcd0b35eb824cfe24ba72fb6e9f142a05:labs.srcs/sources_1/new/riscv_unit.v
 
     riscv_core core(
         .clk_i(clk_i),
