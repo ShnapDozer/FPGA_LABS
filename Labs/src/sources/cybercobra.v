@@ -35,11 +35,11 @@ module CYBERcobra(
     reg  [31:0] WD3;
     wire [31:0] aluResult, RD1, RD2;
     wire [31:0] constant;    
+    wire [31:0] branchAddr_se;
     
     assign sw_i_se = {{16{1'b0}}, sw_i};
     assign constant = {{9{1'b0}}, readData[27:5]};
-    assign branchAddr_se = {{22{1'b0}}, readData[12:5], {2{1'b0}}};
-    
+    assign branchAddr_se = {{22{readData[12]}}, readData[12:5], {2{1'b0}}};   
     assign out_o = RD1;
             
     always@(*) begin
